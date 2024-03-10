@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+            .signup-container h2 {
+                margin-bottom: 20px;
+                text-align: center;
+                color: #333;
+            }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+            .input-box input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+
+            .input-box label {
+                font-size: 14px;
+                color: #666;
+            }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+
+        .show-all-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            text-decoration: none;
+        }
+
+            .show-all-link:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>New Student</h2>
+        <form method="post" action="/NewStudent/AddStudent">
+            <div class="input-box">
+                <input type="text" name="Name" required="">
+                <label>Student Name</label>
+            </div>
+            <div class="input-box">
+                <input type="number" name="grade" required="">
+                <label>Grade</label>
+            </div>
+            <input type="submit" value="Add" class="btn btn-success" />
+        </form>
+        <a href="/NewStudent/ShowAll" class="show-all-link">Show All Students Results</a>
+    </div>
+
+</body>
+</html>

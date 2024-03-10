@@ -1,0 +1,90 @@
+﻿@model List<Students>
+
+@{
+    ViewData["Title"] = "Students";
+    // Sort students by grade in descending order
+    var sortedStudents = Model.OrderByDescending(s => s.Grade).ToList();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .fail {
+            background-color: #FFCCCC; /* Light Red */
+        }
+
+        .success {
+            background-color: #CCFFCC; /* Light Green */
+        }
+
+        /* Define animation */
+        @@keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply animation to each table row */
+        .table tbody tr {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Students</h1>
+        <a href="/NewStudent/AddNew" class="btn btn-primary mb-3">Add New Student</a>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Grade</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in sortedStudents)
+                {
+                    <tr class="@(item.Grade >= 50 ? "success" : "fail")">
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Grade</td>
+                        <td>@(item.Grade >= 50 ? "Success" : "Failed")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Apply animation to each table row
+            $(".table tbody tr").each(function(index) {
+                $(this).css("animation", "fadeInAnimation 0.5s ease-in-out " + (index * 0.5) + "s forwards");
+            });
+        });
+    </script>
+</body>
+</html>
