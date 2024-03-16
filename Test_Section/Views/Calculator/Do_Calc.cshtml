@@ -1,0 +1,91 @@
+﻿@model Calc
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+            .box p {
+                margin: 0;
+            }
+
+        .result-box {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Simple Calculator</h2>
+        <div class="box">
+            <p id="num1">@Model.a</p>
+            <p id="operator">@Model.oper</p>
+            <p id="num2">@Model.b</p>
+        </div>
+        @if (Model.oper == "+")
+        {
+            
+            <div class="result-box" id="result">Result: @(Model.a + Model.b )</div>
+        }
+        else if(Model.oper == "-")
+        {
+            <div class="result-box" id="result">Result: @(Model.a - Model.b)</div>
+        }
+        else
+        {
+            <div class="result-box" id="result">Result: @(Model.a * Model.b)</div>
+        }
+        <button onclick="goBack()">Back</button>
+    </div>
+    <script>
+        function goBack() {
+            window.location.href = "/Calculator/index";
+        }
+    </script>
+</body>
+</html>

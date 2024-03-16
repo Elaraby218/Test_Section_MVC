@@ -24,14 +24,14 @@
         }
 
         .fail {
-            background-color: #FFCCCC; /* Light Red */
+            background-color: #FFCCCC; 
         }
 
         .success {
-            background-color: #CCFFCC; /* Light Green */
+            background-color: #CCFFCC; 
         }
 
-        /* Define animation */
+
         @@keyframes fadeInAnimation {
             0% {
                 opacity: 0;
@@ -43,25 +43,27 @@
             }
         }
 
-        /* Zoom-in effect on hover */
+ 
         .zoom-in {
-            transform: scale(1.1); /* Increase zoom level */
+            height : 110% ; 
+            width : 110% ; 
+    
             z-index: 999;
-            transition: transform 0.5s ease-in-out; /* Add transition for smooth zoom effect */
+        
+            position : relative ; 
+            display : table-row  block ;    
         }
 
-        /* Blur effect on other rows */
+  
         .blur {
             filter: blur(4px);
-            transition: filter 0.5s ease-in-out; /* Add transition for smooth blur effect */
+            transition: filter 0.5s ease-in-out; 
         }
 
-        /* Prevent background color change on hover */
         .table-hover tbody tr:hover {
             background-color: none;
         }
 
-        /* Apply animation to table rows */
         .table tbody tr {
             opacity: 0;
         }
@@ -100,18 +102,16 @@
         $(document).ready(function () {
             $(".table tbody tr").hover(
                 function () {
-                    // Mouse enter
+
                     $(".table tbody tr").not($(this)).addClass("blur");
                     $(this).addClass("zoom-in");
                 },
                 function () {
-                    // Mouse leave
+
                     $(".table tbody tr").removeClass("blur");
                     $(this).removeClass("zoom-in");
                 }
             );
-
-            // Apply animation to each table row
             $(".table tbody tr").each(function (index) {
                 $(this).css("animation", "fadeInAnimation 0.5s ease-in-out " + (index * 0.5) + "s forwards");
             });

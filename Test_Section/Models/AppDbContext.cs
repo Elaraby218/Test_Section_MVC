@@ -14,7 +14,10 @@ namespace Test_Section.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //  string constring = _configuration.GetConnectionString("DefaultConnection"); 
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-1ULGF16\\SQLEXPRESS;Initial Catalog = TestSection ;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+
+            optionsBuilder.UseSqlite("Data Source = AppDB.db;");
+
+           // optionsBuilder.UseSqlServer("Data Source=DESKTOP-1ULGF16\\SQLEXPRESS;Initial Catalog = TestSection ;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
 
        

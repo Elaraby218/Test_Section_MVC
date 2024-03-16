@@ -7,11 +7,14 @@ namespace Test_Section.Controllers
     public class NewStudentController : Controller
     {
         AppDbContext _appContext = new AppDbContext();
-        public IActionResult AddNew(Students student)
+
+        public IActionResult AddNew()
         {
             return View();
         }
 
+
+        [HttpPost]
         public IActionResult AddStudent(Students student) 
         {
             _appContext.Student.Add(student);
